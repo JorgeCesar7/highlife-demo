@@ -338,3 +338,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 .f-nav a, .f-store a { display: inline-block; padding: 4px 0; }
+
+/* Filas que se desplazan de lado sin barra visible */
+.chips, .cat-nav, .map-tabs { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.chips::-webkit-scrollbar, .cat-nav::-webkit-scrollbar, .map-tabs::-webkit-scrollbar { display: none; }
