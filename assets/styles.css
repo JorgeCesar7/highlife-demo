@@ -342,3 +342,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* Filas que se desplazan de lado sin barra visible */
 .chips, .cat-nav, .map-tabs { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .chips::-webkit-scrollbar, .cat-nav::-webkit-scrollbar, .map-tabs::-webkit-scrollbar { display: none; }
+
+/* Que el encabezado fijo no tape el inicio de la sección al saltar a un ancla */
+section[id], article[id], .faq[id] { scroll-margin-top: 84px; }
