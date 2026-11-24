@@ -39,22 +39,14 @@ function todayLine(s) {
   return h ? `Hoy, ${DAYS[d].toLowerCase()}: <b>${t12(h[0])} a ${t12(h[1])}</b>` : `Hoy, ${DAYS[d].toLowerCase()}: <b>cerrado</b>`;
 }
 
+/* Las tiendas vienen en el HTML (lo leen Google y los rastreadores de IA sin JavaScript); aquí solo se marca el día de hoy */
 function renderStores() {
-  const box = document.getElementById("stores");
-  if (!box) return;
   const d = new Date().getDay();
-  const order = [1, 2, 3, 4, 5, 6, 0];
-  box.innerHTML = STORES.map(s => `
-    <article class="store" id="tienda-${s.id.toLowerCase()}">
-      <h3>${s.name}</h3>
-      <p class="addr">${s.addr}</p>
-      <p class="today">${todayLine(s)}</p>
-      <table aria-label="Horario de ${s.name}">${order.map(i => `<tr class="${i === d ? "is-today" : ""}"><td>${DAYS[i]}</td><td>${s.hours[i] ? t12(s.hours[i][0]) + " a " + t12(s.hours[i][1]) : "Cerrado"}</td></tr>`).join("")}</table>
-      <div class="acts">
-        <a class="btn yellow sm" href="${waUrl(s, "Hola High Life " + s.name + ", tengo una pregunta.")}" target="_blank" rel="noopener">${WA_SVG}WhatsApp</a>
-        <a class="btn ghost sm" href="${mapsUrl(s)}" target="_blank" rel="noopener">Cómo llegar</a>
-      </div>
-    </article>`).join("");
+  document.querySelectorAll(".store[data-store]").forEach(card => {
+    const s = store(card.dataset.store);
+    const today = card.querySelector(".today"); if (today) today.innerHTML = todayLine(s);
+    card.querySelectorAll("tr[data-day]").forEach(tr => tr.classList.toggle("is-today", Number(tr.dataset.day) === d));
+  });
 }
 
 /* ---------- Catálogo conectado al inventario ---------- */
