@@ -3,7 +3,7 @@ const STORES = [
   { id: "BV", cid: "11975982351226600082", name: "Bella Vista", city: "Santo Domingo", addr: "Av. Rómulo Betancourt, Santo Domingo", wa: "18099696363",
     maps: "High Life Smoke Shop, Av. Rómulo Betancourt, Santo Domingo",
     hours: [["10:00", "19:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"]] },
-  { id: "OZ", cid: "7839505212516953428", name: "Ensanche Ozama", city: "Santo Domingo Este", addr: "Dr. Octavio Mejía Ricart 42, Santo Domingo Este", wa: null, waLink: "https://wa.link/59g77t",
+  { id: "OZ", cid: "7839505212516953428", name: "Ensanche Ozama", city: "Santo Domingo Este", addr: "Dr. Octavio Mejía Ricart 42, Santo Domingo Este", wa: "18494439786",
     maps: "High Life Smoke Shop Ensanche Ozama, Dr. Octavio Mejía Ricart 42, Santo Domingo Este",
     hours: [null, ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"]] },
   { id: "STI", cid: "18119743240042916362", name: "Santiago", city: "Santiago de los Caballeros", addr: "C. Benito Monción 56, Santiago de los Caballeros", wa: "18299697244",
