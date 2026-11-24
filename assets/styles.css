@@ -130,6 +130,25 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .qa h3 { margin: 0 0 6px; font-size: 17px; }
 .qa p { font-size: 15px; color: #2B2B2B; }
 
+/* WhatsApp en el encabezado */
+.wa-menu { position: relative; }
+.wa-btn { background: var(--black); color: var(--white); }
+.wa-btn .wa-ico { color: var(--yellow); width: 20px; height: 20px; }
+.wa-btn[aria-expanded="true"] { background: var(--white); color: var(--black); }
+.wa-btn[aria-expanded="true"] .wa-ico { color: var(--black); }
+.wa-list { position: absolute; right: 0; top: calc(100% + 12px); z-index: 50; list-style: none; background: var(--white); border: 2px solid var(--black); border-radius: 16px; padding: 6px; min-width: 290px; box-shadow: 6px 6px 0 var(--black); }
+.wa-list a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 12px; border-radius: 10px; text-decoration: none; }
+.wa-list a:hover, .wa-list a:focus-visible { background: var(--yellow); }
+.wa-list b { font-family: var(--display); font-weight: 900; font-size: 20px; text-transform: uppercase; line-height: 1; }
+.wa-list span { font-size: 14px; color: var(--ash); white-space: nowrap; }
+.wa-list b { white-space: nowrap; }
+.wa-list a:hover span { color: var(--black); }
+@media (max-width: 680px) {
+  .site-head .wa-btn { display: inline-flex; width: 40px; height: 40px; padding: 0; }
+  .wa-btn span { display: none; }
+  .wa-list { width: calc(100vw - 32px); min-width: 0; }
+}
+
 /* Pie */
 .foot { background: var(--black); color: #CFCFCF; font-size: 14px; padding: 56px 0 28px; }
 .foot .wrap { display: grid; grid-template-columns: 1fr 2.2fr .9fr; gap: 40px; }
@@ -274,7 +293,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .site-head .wrap { height: 60px; gap: 12px; }
   .logo span { display: none; }
   .nav { gap: 14px; }
-  .site-head .btn { display: none; }
   .hero .wrap { grid-template-columns: 1fr; padding-top: 36px; padding-bottom: 44px; }
   .hero-badge { width: 200px; justify-self: start; grid-row: 1; }
   .hero p { font-size: 17px; }

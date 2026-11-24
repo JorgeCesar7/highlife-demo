@@ -197,4 +197,11 @@ function mapTabs() {
     go.href = t.dataset.go; go.textContent = "Abrir " + t.dataset.name + " en Google Maps";
   }));
 }
-document.addEventListener("DOMContentLoaded", () => { ageGate(); renderStores(); mapTabs(); catalog(); });
+function waMenu() {
+  const b = document.getElementById("waBtn"), l = document.getElementById("waList"); if (!b) return;
+  const set = open => { l.hidden = !open; b.setAttribute("aria-expanded", open); };
+  b.addEventListener("click", e => { e.stopPropagation(); set(l.hidden); if (!l.hidden) l.querySelector("a").focus(); });
+  document.addEventListener("click", e => { if (!l.hidden && !l.contains(e.target)) set(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !l.hidden) { set(false); b.focus(); } });
+}
+document.addEventListener("DOMContentLoaded", () => { ageGate(); waMenu(); renderStores(); mapTabs(); catalog(); });
