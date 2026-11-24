@@ -1,0 +1,457 @@
+{
+ "origen": "Exportación de inventario de Claro Gestión de Negocios (formato de ejemplo)",
+ "empresa": "High Life Smoke Shop",
+ "actualizado": "2026-11-24T18:00:00-04:00",
+ "moneda": "DOP",
+ "almacenes": {
+  "BV": "Bella Vista",
+  "OZ": "Ensanche Ozama",
+  "STI": "Santiago",
+  "PC": "Punta Cana"
+ },
+ "nota": "Maqueta de Lampstand. Productos, precios y existencias de ejemplo.",
+ "productos": [
+  {
+   "codigo": "HL-PAP-001",
+   "descripcion": "Papel 1¼ sin blanquear, 50 hojas",
+   "categoria": "Papeles y conos",
+   "precio": 150,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 37,
+    "STI": 21,
+    "PC": 22
+   }
+  },
+  {
+   "codigo": "HL-PAP-002",
+   "descripcion": "Papel king size slim, 32 hojas",
+   "categoria": "Papeles y conos",
+   "precio": 175,
+   "itbis": true,
+   "existencias": {
+    "BV": 32,
+    "OZ": 29,
+    "STI": 11,
+    "PC": 2
+   }
+  },
+  {
+   "codigo": "HL-PAP-003",
+   "descripcion": "Papel king size con filtros de cartón",
+   "categoria": "Papeles y conos",
+   "precio": 250,
+   "itbis": true,
+   "existencias": {
+    "BV": 20,
+    "OZ": 37,
+    "STI": 3,
+    "PC": 21
+   }
+  },
+  {
+   "codigo": "HL-PAP-004",
+   "descripcion": "Lion Rolling Circus, papel king size estampado",
+   "categoria": "Papeles y conos",
+   "precio": 275,
+   "itbis": true,
+   "existencias": {
+    "BV": 3,
+    "OZ": 0,
+    "STI": 5,
+    "PC": 0
+   }
+  },
+  {
+   "codigo": "HL-PAP-005",
+   "descripcion": "Conos king size prearmados, paquete de 6",
+   "categoria": "Papeles y conos",
+   "precio": 325,
+   "itbis": true,
+   "existencias": {
+    "BV": 2,
+    "OZ": 32,
+    "STI": 10,
+    "PC": 11
+   }
+  },
+  {
+   "codigo": "HL-PAP-006",
+   "descripcion": "Filtros de cartón, librito de 50",
+   "categoria": "Papeles y conos",
+   "precio": 100,
+   "itbis": true,
+   "existencias": {
+    "BV": 27,
+    "OZ": 1,
+    "STI": 35,
+    "PC": 16
+   }
+  },
+  {
+   "codigo": "HL-PAP-007",
+   "descripcion": "Papel de cáñamo 1¼, 50 hojas",
+   "categoria": "Papeles y conos",
+   "precio": 175,
+   "itbis": true,
+   "existencias": {
+    "BV": 3,
+    "OZ": 2,
+    "STI": 10,
+    "PC": 0
+   }
+  },
+  {
+   "codigo": "HL-GRI-001",
+   "descripcion": "Grinder de aluminio 4 piezas, 63 mm",
+   "categoria": "Grinders",
+   "precio": 1450,
+   "itbis": true,
+   "existencias": {
+    "BV": 21,
+    "OZ": 1,
+    "STI": 2,
+    "PC": 0
+   }
+  },
+  {
+   "codigo": "HL-GRI-002",
+   "descripcion": "Grinder de aluminio 4 piezas, 50 mm",
+   "categoria": "Grinders",
+   "precio": 950,
+   "itbis": true,
+   "existencias": {
+    "BV": 9,
+    "OZ": 14,
+    "STI": 33,
+    "PC": 33
+   }
+  },
+  {
+   "codigo": "HL-GRI-003",
+   "descripcion": "Grinder de metal 2 piezas, 40 mm",
+   "categoria": "Grinders",
+   "precio": 450,
+   "itbis": true,
+   "existencias": {
+    "BV": 10,
+    "OZ": 2,
+    "STI": 3,
+    "PC": 8
+   }
+  },
+  {
+   "codigo": "HL-GRI-004",
+   "descripcion": "Grinder eléctrico recargable",
+   "categoria": "Grinders",
+   "precio": 2900,
+   "itbis": true,
+   "existencias": {
+    "BV": 35,
+    "OZ": 40,
+    "STI": 29,
+    "PC": 31
+   }
+  },
+  {
+   "codigo": "HL-GRI-005",
+   "descripcion": "Grinder de madera con tapa magnética",
+   "categoria": "Grinders",
+   "precio": 750,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 27,
+    "STI": 20,
+    "PC": 37
+   }
+  },
+  {
+   "codigo": "HL-BON-001",
+   "descripcion": "Bonga de vidrio recta, 30 cm",
+   "categoria": "Bongas",
+   "precio": 2800,
+   "itbis": true,
+   "existencias": {
+    "BV": 3,
+    "OZ": 20,
+    "STI": 0,
+    "PC": 0
+   }
+  },
+  {
+   "codigo": "HL-BON-002",
+   "descripcion": "Bonga de vidrio beaker, 25 cm",
+   "categoria": "Bongas",
+   "precio": 3200,
+   "itbis": true,
+   "existencias": {
+    "BV": 1,
+    "OZ": 36,
+    "STI": 2,
+    "PC": 11
+   }
+  },
+  {
+   "codigo": "HL-BON-003",
+   "descripcion": "Bonga de silicona irrompible, 20 cm",
+   "categoria": "Bongas",
+   "precio": 1650,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 1,
+    "STI": 0,
+    "PC": 3
+   }
+  },
+  {
+   "codigo": "HL-BON-004",
+   "descripcion": "Bonga mini de vidrio, 15 cm",
+   "categoria": "Bongas",
+   "precio": 1250,
+   "itbis": true,
+   "existencias": {
+    "BV": 1,
+    "OZ": 3,
+    "STI": 22,
+    "PC": 27
+   }
+  },
+  {
+   "codigo": "HL-BON-005",
+   "descripcion": "Bowl de vidrio 14 mm",
+   "categoria": "Bongas",
+   "precio": 450,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 14,
+    "STI": 16,
+    "PC": 28
+   }
+  },
+  {
+   "codigo": "HL-PIP-001",
+   "descripcion": "Pipa de vidrio tipo cuchara",
+   "categoria": "Pipas",
+   "precio": 650,
+   "itbis": true,
+   "existencias": {
+    "BV": 2,
+    "OZ": 24,
+    "STI": 6,
+    "PC": 2
+   }
+  },
+  {
+   "codigo": "HL-PIP-002",
+   "descripcion": "Pipa de madera con tapa",
+   "categoria": "Pipas",
+   "precio": 850,
+   "itbis": true,
+   "existencias": {
+    "BV": 25,
+    "OZ": 0,
+    "STI": 12,
+    "PC": 3
+   }
+  },
+  {
+   "codigo": "HL-PIP-003",
+   "descripcion": "Pipa de silicona con bowl de vidrio",
+   "categoria": "Pipas",
+   "precio": 750,
+   "itbis": true,
+   "existencias": {
+    "BV": 17,
+    "OZ": 2,
+    "STI": 0,
+    "PC": 7
+   }
+  },
+  {
+   "codigo": "HL-PIP-004",
+   "descripcion": "One hitter de metal",
+   "categoria": "Pipas",
+   "precio": 400,
+   "itbis": true,
+   "existencias": {
+    "BV": 20,
+    "OZ": 38,
+    "STI": 12,
+    "PC": 9
+   }
+  },
+  {
+   "codigo": "HL-VAP-001",
+   "descripcion": "Vaporizador portátil de hierbas secas",
+   "categoria": "Vaporizadores",
+   "precio": 7900,
+   "itbis": true,
+   "existencias": {
+    "BV": 3,
+    "OZ": 1,
+    "STI": 18,
+    "PC": 26
+   }
+  },
+  {
+   "codigo": "HL-VAP-002",
+   "descripcion": "Batería 510 con temperatura ajustable",
+   "categoria": "Vaporizadores",
+   "precio": 1100,
+   "itbis": true,
+   "existencias": {
+    "BV": 39,
+    "OZ": 40,
+    "STI": 21,
+    "PC": 24
+   }
+  },
+  {
+   "codigo": "HL-VAP-003",
+   "descripcion": "Vaporizador de mesa",
+   "categoria": "Vaporizadores",
+   "precio": 14500,
+   "itbis": true,
+   "existencias": {
+    "BV": 27,
+    "OZ": 0,
+    "STI": 38,
+    "PC": 8
+   }
+  },
+  {
+   "codigo": "HL-ENC-001",
+   "descripcion": "Encendedor de gas recargable",
+   "categoria": "Encendedores",
+   "precio": 125,
+   "itbis": true,
+   "existencias": {
+    "BV": 11,
+    "OZ": 14,
+    "STI": 0,
+    "PC": 23
+   }
+  },
+  {
+   "codigo": "HL-ENC-002",
+   "descripcion": "Encendedor tipo antorcha",
+   "categoria": "Encendedores",
+   "precio": 950,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 13,
+    "STI": 0,
+    "PC": 35
+   }
+  },
+  {
+   "codigo": "HL-ENC-003",
+   "descripcion": "Encendedor eléctrico de arco USB",
+   "categoria": "Encendedores",
+   "precio": 850,
+   "itbis": true,
+   "existencias": {
+    "BV": 5,
+    "OZ": 2,
+    "STI": 3,
+    "PC": 36
+   }
+  },
+  {
+   "codigo": "HL-ENC-004",
+   "descripcion": "Gas butano 300 ml",
+   "categoria": "Encendedores",
+   "precio": 450,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 19,
+    "STI": 4,
+    "PC": 11
+   }
+  },
+  {
+   "codigo": "HL-ACC-001",
+   "descripcion": "Bandeja metálica mediana",
+   "categoria": "Accesorios",
+   "precio": 650,
+   "itbis": true,
+   "existencias": {
+    "BV": 29,
+    "OZ": 22,
+    "STI": 25,
+    "PC": 0
+   }
+  },
+  {
+   "codigo": "HL-ACC-002",
+   "descripcion": "Bandeja con tapa magnética",
+   "categoria": "Accesorios",
+   "precio": 1350,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 23,
+    "STI": 37,
+    "PC": 32
+   }
+  },
+  {
+   "codigo": "HL-ACC-003",
+   "descripcion": "Estuche antiolor con candado",
+   "categoria": "Accesorios",
+   "precio": 1550,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 32,
+    "STI": 28,
+    "PC": 31
+   }
+  },
+  {
+   "codigo": "HL-ACC-004",
+   "descripcion": "Frasco de vidrio hermético",
+   "categoria": "Accesorios",
+   "precio": 350,
+   "itbis": true,
+   "existencias": {
+    "BV": 2,
+    "OZ": 5,
+    "STI": 34,
+    "PC": 3
+   }
+  },
+  {
+   "codigo": "HL-ACC-005",
+   "descripcion": "Kit de limpieza para vidrio",
+   "categoria": "Accesorios",
+   "precio": 550,
+   "itbis": true,
+   "existencias": {
+    "BV": 18,
+    "OZ": 16,
+    "STI": 1,
+    "PC": 1
+   }
+  },
+  {
+   "codigo": "HL-ACC-006",
+   "descripcion": "Báscula digital de bolsillo",
+   "categoria": "Accesorios",
+   "precio": 1250,
+   "itbis": true,
+   "existencias": {
+    "BV": 39,
+    "OZ": 0,
+    "STI": 3,
+    "PC": 22
+   }
+  }
+ ]
+}
