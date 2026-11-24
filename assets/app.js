@@ -1,15 +1,15 @@
 /* High Life Smoke Shop, maqueta de Lampstand */
 const STORES = [
-  { id: "BV", name: "Bella Vista", city: "Santo Domingo", addr: "Av. Rómulo Betancourt, Santo Domingo", wa: "18099696363",
+  { id: "BV", cid: "11975982351226600082", name: "Bella Vista", city: "Santo Domingo", addr: "Av. Rómulo Betancourt, Santo Domingo", wa: "18099696363",
     maps: "High Life Smoke Shop, Av. Rómulo Betancourt, Santo Domingo",
     hours: [["10:00", "19:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"]] },
-  { id: "OZ", name: "Ensanche Ozama", city: "Santo Domingo Este", addr: "Dr. Octavio Mejía Ricart 42, Santo Domingo Este", wa: null, waLink: "https://wa.link/59g77t",
+  { id: "OZ", cid: "7839505212516953428", name: "Ensanche Ozama", city: "Santo Domingo Este", addr: "Dr. Octavio Mejía Ricart 42, Santo Domingo Este", wa: null, waLink: "https://wa.link/59g77t",
     maps: "High Life Smoke Shop Ensanche Ozama, Dr. Octavio Mejía Ricart 42, Santo Domingo Este",
     hours: [null, ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"]] },
-  { id: "STI", name: "Santiago", city: "Santiago de los Caballeros", addr: "C. Benito Monción 56, Santiago de los Caballeros", wa: "18299697244",
+  { id: "STI", cid: "18119743240042916362", name: "Santiago", city: "Santiago de los Caballeros", addr: "C. Benito Monción 56, Santiago de los Caballeros", wa: "18299697244",
     maps: "High Life Smoke Shop Santiago, C. Benito Monción 56, Santiago de los Caballeros",
     hours: [["10:00", "18:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "19:00"]] },
-  { id: "PC", name: "Punta Cana", city: "Punta Cana", addr: "Plaza Artística, Av. Alemania, Punta Cana", wa: "18299693991",
+  { id: "PC", cid: "12903321818616243635", name: "Punta Cana", city: "Punta Cana", addr: "Plaza Artística, Av. Alemania, Punta Cana", wa: "18299693991",
     maps: "High Life Smoke Shop Punta Cana, Plaza Artística, Av. Alemania, Punta Cana",
     hours: [["10:00", "15:00"], ["10:00", "20:00"], ["10:00", "20:00"], ["10:00", "20:00"], ["10:00", "20:00"], ["10:00", "20:00"], ["10:00", "18:00"]] },
 ];
@@ -19,7 +19,7 @@ const fmt = n => "RD$" + n.toLocaleString("es-DO");
 const t12 = s => { let [h, m] = s.split(":").map(Number); const ap = h >= 12 ? "p. m." : "a. m."; h = h % 12 || 12; return `${h}${m ? ":" + String(m).padStart(2, "0") : ""} ${ap}`; };
 const store = id => STORES.find(s => s.id === id);
 const waUrl = (s, text) => s.wa ? `https://wa.me/${s.wa}?text=${encodeURIComponent(text)}` : s.waLink;
-const mapsUrl = s => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(s.maps);
+const mapsUrl = s => "https://maps.google.com/?cid=" + s.cid;
 const safe = { get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
 
 /* Verificación de edad: la ley 48-00 prohíbe vender tabaco a menores de 18 años */
@@ -196,4 +196,13 @@ async function catalog() {
   document.querySelectorAll(".group").forEach(g => io.observe(g));
 }
 
-document.addEventListener("DOMContentLoaded", () => { ageGate(); renderStores(); catalog(); });
+function mapTabs() {
+  const tabs = document.querySelectorAll(".map-tab"); if (!tabs.length) return;
+  const frame = document.getElementById("map-frame"), go = document.getElementById("map-go");
+  tabs.forEach(t => t.addEventListener("click", () => {
+    tabs.forEach(x => x.setAttribute("aria-selected", x === t));
+    frame.src = t.dataset.src; frame.title = "Mapa de High Life Smoke Shop " + t.dataset.name;
+    go.href = t.dataset.go; go.textContent = "Abrir " + t.dataset.name + " en Google Maps";
+  }));
+}
+document.addEventListener("DOMContentLoaded", () => { ageGate(); renderStores(); mapTabs(); catalog(); });

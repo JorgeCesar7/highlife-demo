@@ -102,6 +102,20 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .band span { margin: 0 28px; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
+/* Mapa */
+.map-sec { padding: 72px 0; border-top: 2px solid var(--black); background: var(--white); }
+.map-sec h2 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(40px, 5.4vw, 64px); line-height: .92; }
+.map-grid { display: grid; grid-template-columns: 300px 1fr; gap: 20px; align-items: stretch; }
+.map-tabs { display: flex; flex-direction: column; gap: 8px; }
+.map-tab { text-align: left; background: var(--white); border: 2px solid var(--black); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
+.map-tab b { font-family: var(--display); font-weight: 900; font-size: 26px; text-transform: uppercase; line-height: 1; }
+.map-tab span { font-size: 14px; color: var(--ash); }
+.map-tab:hover { background: var(--smoke); }
+.map-tab[aria-selected="true"] { background: var(--yellow); }
+.map-tab[aria-selected="true"] span { color: var(--black); }
+.map-box { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.map-box iframe { width: 100%; flex: 1; min-height: 420px; border: 2px solid var(--black); border-radius: 18px; background: var(--smoke); display: block; }
+
 /* Pie */
 .foot { background: var(--black); color: #CFCFCF; font-size: 14px; padding: 44px 0 28px; }
 .foot .wrap { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
@@ -218,6 +232,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .cat-nav a { white-space: nowrap; gap: 6px; }
   .sim { grid-template-columns: 1fr; }
   .foot .wrap { grid-template-columns: 1fr 1fr; }
+  .map-grid { grid-template-columns: 1fr; }
+  .map-tabs { flex-direction: row; overflow-x: auto; padding-bottom: 4px; }
+  .map-tab { flex: 0 0 auto; padding: 10px 14px; }
+  .map-tab span { display: none; }
+  .map-tab b { font-size: 22px; white-space: nowrap; }
+  .map-box iframe { min-height: 360px; }
 }
 @media (max-width: 680px) {
   .wrap { padding: 0 16px; }
