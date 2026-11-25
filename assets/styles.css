@@ -494,3 +494,6 @@ section[id], article[id], .faq[id] { scroll-margin-top: 84px; }
 .bag-btn.bump { animation: bump .35s ease; }
 @media (prefers-reduced-motion: reduce) { .bag-btn.bump { animation: none; } }
 @media (max-width: 560px) { .qty-card { height: 38px; } .qty-card button { width: 30px; } }
+
+.store .special { font-size: 14px; color: var(--yellow); font-weight: 600; }
+.store .special b { color: var(--white); }

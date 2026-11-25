@@ -39,9 +39,18 @@ function drDay() {
   try { return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: "America/Santo_Domingo" }).format(new Date())); }
   catch (e) { return new Date().getDay(); }
 }
+/* Horario especial (feriados): solo aquí se escribe, y solo ese día sale una línea arriba del horario.
+   Formato: "2026-12-25": { BV: null, OZ: ["10:00", "14:00"] }  (null = cerrado) */
+const SPECIAL = {};
+function drDate() {
+  try { return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Santo_Domingo" }).format(new Date()); }
+  catch (e) { return new Date().toISOString().slice(0, 10); }
+}
+const hrs = h => h ? `${t12(h[0])} a ${t12(h[1])}` : "cerrado";
 function todayLine(s) {
-  const d = drDay(), h = s.hours[d];
-  return h ? `Hoy, ${DAYS[d].toLowerCase()}: <b>${t12(h[0])} a ${t12(h[1])}</b>` : `Hoy, ${DAYS[d].toLowerCase()}: <b>cerrado</b>`;
+  const d = drDay(), sp = SPECIAL[drDate()];
+  if (sp && s.id in sp) return `Hoy, horario especial: <b>${hrs(sp[s.id])}</b>`;
+  return `Hoy, ${DAYS[d].toLowerCase()}: <b>${hrs(s.hours[d])}</b>`;
 }
 
 /* Las tiendas vienen en el HTML (lo leen Google y los rastreadores de IA sin JavaScript); aquí solo se marca el día de hoy */
@@ -50,6 +59,8 @@ function renderStores() {
   document.querySelectorAll(".store[data-store], .tile[data-store]").forEach(card => {
     const s = store(card.dataset.store);
     const today = card.querySelector(".today"); if (today) today.innerHTML = todayLine(s);
+    const sp = SPECIAL[drDate()], spEl = card.querySelector(".special");
+    if (spEl && sp && s.id in sp) { spEl.innerHTML = `Hoy, horario especial: <b>${hrs(sp[s.id])}</b>`; spEl.hidden = false; }
     card.querySelectorAll("tr[data-day]").forEach(tr => tr.classList.toggle("is-today", Number(tr.dataset.day) === d));
   });
 }
