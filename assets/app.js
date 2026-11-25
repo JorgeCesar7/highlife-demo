@@ -68,7 +68,8 @@ function renderStores() {
 /* ---------- Catálogo conectado al inventario ---------- */
 let INV = null, branch = "ALL", query = "", bag = {};
 const state = (n) => n === 0 ? "out" : n <= 3 ? "low" : "ok";
-const stateTxt = (n) => n === 0 ? "agotado" : n <= 3 ? `quedan ${n}` : "disponible";
+const left = n => n === 1 ? "queda 1" : `quedan ${n}`;
+const stateTxt = (n) => n === 0 ? "agotado" : n <= 3 ? left(n) : "disponible";
 
 async function loadInventory() {
   const res = await fetch("data/inventario-claro.json", { cache: "no-store" });
@@ -99,7 +100,7 @@ const maxFor = p => branch === "ALL" ? Math.max(...STORES.map(s => p.existencias
 function addCtl(p) {
   const q = bag[p.codigo] || 0, max = maxFor(p);
   if (!q) return `<button class="add" data-act="inc" aria-label="Añadir a mi pedido: ${p.descripcion}" ${max === 0 ? "disabled" : ""}>+</button>`;
-  return `<span class="qty qty-card" role="group" aria-label="Cantidad de ${p.descripcion} en mi pedido"><button data-act="dec" aria-label="Quitar uno">−</button><output aria-live="polite">${q}</output><button data-act="inc" aria-label="Añadir uno" ${q >= max ? `disabled title="No hay más en existencia"` : ""}>+</button></span>`;
+  return `<span class="qty qty-card${q > max ? " over" : ""}" role="group" aria-label="Cantidad de ${p.descripcion} en mi pedido"${q > max ? ` title="Solo ${left(max)}"` : ""}><button data-act="dec" aria-label="Quitar uno">−</button><output aria-live="polite">${q}</output><button data-act="inc" aria-label="Añadir uno" ${q >= max ? `disabled title="No hay más en existencia"` : ""}>+</button></span>`;
 }
 
 function itemHtml(p) {
@@ -133,8 +134,8 @@ function renderDrawer() {
     const p = INV.productos.find(x => x.codigo === code);
     const n = p.existencias[s.id]; if (n < qty) short = true;
     return `<div class="line"><span>${p.descripcion}<br><small>${fmt(p.precio)} c/u</small></span>
-      <span class="qty"><button data-q="-1" data-c="${code}" aria-label="Quitar uno">−</button><output>${qty}</output><button data-q="1" data-c="${code}" aria-label="Añadir uno">+</button></span>
-      ${n < qty ? `<span class="warn">${n === 0 ? "Agotado" : "Solo quedan " + n} en ${s.name}. Prueba otra tienda.</span>` : ""}</div>`;
+      <span class="qty"><button data-q="-1" data-c="${code}" aria-label="Quitar uno">−</button><output>${qty}</output><button data-q="1" data-c="${code}" aria-label="Añadir uno" ${qty >= n ? `disabled title="No hay más en ${s.name}"` : ""}>+</button></span>
+      ${n < qty ? `<span class="warn">${n === 0 ? `Agotado en ${s.name}.` : `Solo ${left(n)} en ${s.name}.`} <button class="fix" data-fix="${code}" data-n="${n}">${n === 0 ? "Quitar" : "Dejar " + n}</button> o prueba otra tienda.</span>` : ""}</div>`;
   }).join("") || `<p class="empty">Tu pedido está vacío. Toca + en cualquier producto para añadirlo.</p>`;
   document.getElementById("bagTotal").textContent = fmt(bagTotal());
   const ship = document.querySelector('input[name="how"][value="ship"]');
@@ -151,6 +152,7 @@ function renderDrawer() {
 function confirmOrder() {
   const s = store(document.getElementById("pickStore").value), how = radio("how"), pay = radio("pay");
   const total = bagTotal(), items = Object.entries(bag);
+  if (items.some(([code, qty]) => INV.productos.find(x => x.codigo === code).existencias[s.id] < qty)) { renderDrawer(); return; }
   items.forEach(([code, qty]) => { INV.productos.find(x => x.codigo === code).existencias[s.id] -= qty; });
   const num = `HL-${s.id}-${String(Math.floor(1000 + Math.random() * 9000))}`;
   const now = new Date().toLocaleTimeString("es-DO", { hour: "numeric", minute: "2-digit" });
@@ -221,6 +223,8 @@ async function catalog() {
   document.getElementById("drawer").addEventListener("click", e => { if (e.target.id === "drawer") closeDrawer(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !document.getElementById("drawer").hidden) closeDrawer(); });
   document.getElementById("bagLines").addEventListener("click", e => {
+    const f = e.target.closest("[data-fix]");
+    if (f) { const n = Number(f.dataset.n); if (n > 0) bag[f.dataset.fix] = n; else delete bag[f.dataset.fix]; renderDrawer(); renderMenu(); updateBagBtn(); return; }
     const b = e.target.closest("[data-q]"); if (!b) return;
     const c = b.dataset.c; bag[c] = (bag[c] || 0) + Number(b.dataset.q); if (bag[c] <= 0) delete bag[c];
     renderDrawer(); renderMenu(); updateBagBtn();
