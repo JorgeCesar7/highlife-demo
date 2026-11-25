@@ -34,14 +34,19 @@ function ageGate() {
   g.querySelector("[data-no]").addEventListener("click", () => { g.querySelector(".no-msg").hidden = false; });
 }
 
+/* Día de hoy según la hora de República Dominicana (no la del visitante), se recalcula en cada visita */
+function drDay() {
+  try { return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: "America/Santo_Domingo" }).format(new Date())); }
+  catch (e) { return new Date().getDay(); }
+}
 function todayLine(s) {
-  const d = new Date().getDay(), h = s.hours[d];
+  const d = drDay(), h = s.hours[d];
   return h ? `Hoy, ${DAYS[d].toLowerCase()}: <b>${t12(h[0])} a ${t12(h[1])}</b>` : `Hoy, ${DAYS[d].toLowerCase()}: <b>cerrado</b>`;
 }
 
 /* Las tiendas vienen en el HTML (lo leen Google y los rastreadores de IA sin JavaScript); aquí solo se marca el día de hoy */
 function renderStores() {
-  const d = new Date().getDay();
+  const d = drDay();
   document.querySelectorAll(".store[data-store], .tile[data-store]").forEach(card => {
     const s = store(card.dataset.store);
     const today = card.querySelector(".today"); if (today) today.innerHTML = todayLine(s);
@@ -78,16 +83,23 @@ function renderMenu() {
   nav.innerHTML = navHtml;
 }
 
+/* Cantidad en la tarjeta: + agrega; luego − n + hasta lo que hay en existencia */
+const maxFor = p => branch === "ALL" ? Math.max(...STORES.map(s => p.existencias[s.id])) : p.existencias[branch];
+function addCtl(p) {
+  const q = bag[p.codigo] || 0, max = maxFor(p);
+  if (!q) return `<button class="add" data-act="inc" aria-label="Añadir a mi pedido: ${p.descripcion}" ${max === 0 ? "disabled" : ""}>+</button>`;
+  return `<span class="qty qty-card" role="group" aria-label="Cantidad de ${p.descripcion} en mi pedido"><button data-act="dec" aria-label="Quitar uno">−</button><output aria-live="polite">${q}</output><button data-act="inc" aria-label="Añadir uno" ${q >= max ? `disabled title="No hay más en existencia"` : ""}>+</button></span>`;
+}
+
 function itemHtml(p) {
   const shown = branch === "ALL" ? STORES : [store(branch)];
   const total = shown.reduce((a, s) => a + p.existencias[s.id], 0);
   const avail = shown.map(s => { const n = p.existencias[s.id], k = state(n); return `<span class="${k}"><i class="dot ${k}"></i>${s.name}${branch === "ALL" ? "" : ": " + stateTxt(n)}</span>`; }).join("");
-  const inBag = !!bag[p.codigo];
   return `<article class="item" data-code="${p.codigo}"><img class="pimg" src="assets/fotos/${(window.FOTOS || {})[p.codigo] || "papeles-a"}-sm.webp" alt="${p.descripcion}" width="400" height="400" loading="lazy">
     <div class="pbody"><h3>${p.descripcion}</h3>
     <div class="avail" aria-label="Disponibilidad por tienda">${avail}</div>
     <div class="pfoot"><span class="price">${fmt(p.precio)}</span>
-    <button class="add" aria-pressed="${inBag}" aria-label="${inBag ? "Quitar de" : "Añadir a"} mi pedido: ${p.descripcion}" ${total === 0 && !inBag ? "disabled" : ""}>${inBag ? "✓" : "+"}</button></div></div>
+    <span class="ctl">${addCtl(p)}</span></div></div>
   </article>`;
 }
 
@@ -180,10 +192,14 @@ async function catalog() {
   chips.addEventListener("click", e => { const b = e.target.closest("[data-b]"); if (!b) return; branch = b.dataset.b; chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.b === branch)); if (branch !== "ALL") document.getElementById("pickStore").value = branch; renderMenu(); });
   document.getElementById("q").addEventListener("input", e => { query = e.target.value; renderMenu(); });
   document.getElementById("menu").addEventListener("click", e => {
-    const b = e.target.closest(".add"); if (!b) return;
-    const code = b.closest(".item").dataset.code;
-    if (bag[code]) delete bag[code]; else bag[code] = 1;
-    renderMenu(); updateBagBtn();
+    const b = e.target.closest("[data-act]"); if (!b) return;
+    const item = b.closest(".item"), code = item.dataset.code, act = b.dataset.act;
+    const p = INV.productos.find(x => x.codigo === code);
+    bag[code] = (bag[code] || 0) + (act === "inc" ? 1 : -1); if (bag[code] <= 0) delete bag[code];
+    const ctl = item.querySelector(".ctl"); ctl.innerHTML = addCtl(p);
+    (ctl.querySelector(`[data-act="${act}"]:not(:disabled)`) || ctl.querySelector("button:not(:disabled)"))?.focus();
+    updateBagBtn();
+    const bb = document.getElementById("bagBtn"); bb.classList.remove("bump"); void bb.offsetWidth; bb.classList.add("bump");
   });
   const sel = document.getElementById("pickStore");
   sel.innerHTML = STORES.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
