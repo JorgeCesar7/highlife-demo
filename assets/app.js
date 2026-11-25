@@ -204,4 +204,17 @@ function waMenu() {
   document.addEventListener("click", e => { if (!l.hidden && !l.contains(e.target)) set(false); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !l.hidden) { set(false); b.focus(); } });
 }
-document.addEventListener("DOMContentLoaded", () => { ageGate(); waMenu(); renderStores(); mapTabs(); catalog(); });
+function coinTilt() {
+  const b = document.getElementById("badge"); if (!b) return;
+  const coin = b.querySelector(".coin");
+  if (!matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches) return;
+  b.addEventListener("pointermove", e => {
+    const r = b.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    coin.style.setProperty("--ry", ((x - .5) * 22).toFixed(1) + "deg");
+    coin.style.setProperty("--rx", ((.5 - y) * 22).toFixed(1) + "deg");
+    coin.style.setProperty("--gx", (15 + x * 50).toFixed(0) + "%");
+    coin.style.setProperty("--gy", (10 + y * 40).toFixed(0) + "%");
+  });
+  b.addEventListener("pointerleave", () => { ["--rx", "--ry", "--gx", "--gy"].forEach(v => coin.style.removeProperty(v)); });
+}
+document.addEventListener("DOMContentLoaded", () => { coinTilt(); ageGate(); waMenu(); renderStores(); mapTabs(); catalog(); });
