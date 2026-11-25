@@ -67,14 +67,14 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .hero-badge { perspective: 900px; }
 .coin-float { width: 100%; height: 100%; animation: coin-in .9s cubic-bezier(.2,.8,.2,1) both, coin-float 6s ease-in-out 1s infinite; filter: drop-shadow(0 26px 22px rgba(0,0,0,.28)); }
 .coin { --rx: 0deg; --ry: 0deg; --gx: 32%; --gy: 24%; position: relative; width: 100%; height: 100%; border-radius: 50%; transform: rotateX(var(--rx)) rotateY(var(--ry)); transition: transform .25s ease-out;
-  box-shadow: 0 3px 0 #1d1d1d, 0 6px 0 #0d0d0d, 0 8px 0 #000, inset 0 0 0 0 transparent; }
+}
 .coin img { display: block; width: 100%; height: 100%; border-radius: 50%; }
 .coin .foil, .coin .gloss, .coin .sheen { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; }
 .coin .foil { background: conic-gradient(from calc(var(--ry) * 6) at 50% 50%, #ff9de2, #9ee7ff, #b7ff9e, #fff59e, #ffb39e, #ff9de2); mix-blend-mode: soft-light; opacity: .32; }
 .coin .gloss { background:
-    radial-gradient(ellipse 34% 22% at var(--gx) var(--gy), rgba(255,255,255,.85), rgba(255,255,255,.18) 60%, transparent 72%),
-    radial-gradient(circle at 68% 88%, rgba(255,255,255,.22), transparent 28%);
-  box-shadow: inset 0 -22px 38px rgba(0,0,0,.22), inset 0 14px 26px rgba(255,255,255,.35); }
+    radial-gradient(ellipse 30% 20% at var(--gx) var(--gy), rgba(255,255,255,.42), rgba(255,255,255,.1) 60%, transparent 72%),
+    radial-gradient(circle at 68% 88%, rgba(255,255,255,.14), transparent 28%);
+  box-shadow: inset 0 -22px 38px rgba(0,0,0,.18), inset 0 14px 26px rgba(255,255,255,.2); }
 .coin .sheen { overflow: hidden; background: linear-gradient(110deg, transparent 40%, rgba(255,255,255,.08) 44%, rgba(255,255,255,.55) 48%, rgba(255,250,210,.25) 51%, transparent 56%) no-repeat; background-size: 300% 100%; background-position: 130% 0; mix-blend-mode: screen; animation: sheen 6.5s ease-in-out 1.4s infinite; }
 @keyframes coin-in { from { opacity: 0; scale: .7; rotate: -25deg; } to { opacity: 1; scale: 1; rotate: 0deg; } }
 @keyframes coin-float { 50% { translate: 0 -10px; } }
@@ -172,6 +172,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .wa-btn span { display: none; }
   .wa-list { width: calc(100vw - 32px); min-width: 0; }
 }
+
+/* Página de tienda */
+.store h3 a { text-decoration: none; }
+.store h3 a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.cat-hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.store-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 20px; align-items: stretch; }
+.store-map { width: 100%; min-height: 420px; border: 2px solid #2A2A2A; border-radius: 16px; background: #1a1a1a; }
+.others { padding-top: 0; }
+.others h2 { font-size: clamp(30px, 4vw, 40px); margin-bottom: 16px; }
+.others .ctas { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* Pie */
 .f-social { display: flex; gap: 10px; margin-top: 4px; }
@@ -316,6 +326,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .map-tab span { display: none; }
   .map-tab b { font-size: 22px; white-space: nowrap; }
   .map-box iframe { min-height: 360px; }
+  .store-grid { grid-template-columns: 1fr; }
+  .store-map { min-height: 320px; }
 }
 @media (max-width: 680px) {
   .wrap { padding: 0 16px; }

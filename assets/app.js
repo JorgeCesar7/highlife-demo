@@ -154,6 +154,7 @@ function setupSim() {
 async function catalog() {
   if (!document.getElementById("menu")) return;
   await loadInventory();
+  const qp = new URLSearchParams(location.search).get("tienda"); if (qp && store(qp)) branch = qp;
   const chips = document.getElementById("branchChips");
   chips.insertAdjacentHTML("beforeend", [{ id: "ALL", name: "Todas" }, ...STORES].map(s => `<button class="chip" data-b="${s.id}" aria-pressed="${s.id === branch}">${s.name}</button>`).join(""));
   chips.addEventListener("click", e => { const b = e.target.closest("[data-b]"); if (!b) return; branch = b.dataset.b; chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.b === branch)); if (branch !== "ALL") document.getElementById("pickStore").value = branch; renderMenu(); });
@@ -166,6 +167,7 @@ async function catalog() {
   });
   const sel = document.getElementById("pickStore");
   sel.innerHTML = STORES.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
+  if (branch !== "ALL") sel.value = branch;
   sel.addEventListener("change", renderDrawer);
   document.getElementById("bagBtn").addEventListener("click", openDrawer);
   document.querySelector("#drawer .x").addEventListener("click", closeDrawer);
