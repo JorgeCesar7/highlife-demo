@@ -1,15 +1,15 @@
 /* High Life Smoke Shop, maqueta de Lampstand */
 const STORES = [
-  { id: "BV", cid: "11975982351226600082", name: "Bella Vista", city: "Santo Domingo", addr: "Av. Rómulo Betancourt, Santo Domingo", wa: "18099696363",
+  { id: "BV", ship: true, cid: "11975982351226600082", name: "Bella Vista", city: "Santo Domingo", addr: "Av. Rómulo Betancourt, Santo Domingo", wa: "18099696363",
     maps: "High Life Smoke Shop, Av. Rómulo Betancourt, Santo Domingo",
     hours: [["10:00", "19:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"]] },
-  { id: "OZ", cid: "7839505212516953428", name: "Ensanche Ozama", city: "Santo Domingo Este", addr: "Dr. Octavio Mejía Ricart 42, Santo Domingo Este", wa: "18494439786",
+  { id: "OZ", ship: false, cid: "7839505212516953428", name: "Ensanche Ozama", city: "Santo Domingo Este", addr: "Dr. Octavio Mejía Ricart 42, Santo Domingo Este", wa: "18494439786",
     maps: "High Life Smoke Shop Ensanche Ozama, Dr. Octavio Mejía Ricart 42, Santo Domingo Este",
     hours: [null, ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"]] },
-  { id: "STI", cid: "18119743240042916362", name: "Santiago", city: "Santiago de los Caballeros", addr: "C. Benito Monción 56, Santiago de los Caballeros", wa: "18299697244",
+  { id: "STI", ship: true, cid: "18119743240042916362", name: "Santiago", city: "Santiago de los Caballeros", addr: "C. Benito Monción 56, Santiago de los Caballeros", wa: "18299697244",
     maps: "High Life Smoke Shop Santiago, C. Benito Monción 56, Santiago de los Caballeros",
     hours: [["10:00", "18:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "21:00"], ["10:00", "19:00"]] },
-  { id: "PC", cid: "12903321818616243635", name: "Punta Cana", city: "Punta Cana", addr: "Plaza Artística, Av. Alemania, Punta Cana", wa: "18299693991",
+  { id: "PC", ship: true, cid: "12903321818616243635", name: "Punta Cana", city: "Punta Cana", addr: "Plaza Artística, Av. Alemania, Punta Cana", wa: "18299693991",
     maps: "High Life Smoke Shop Punta Cana, Plaza Artística, Av. Alemania, Punta Cana",
     hours: [["10:00", "15:00"], ["10:00", "20:00"], ["10:00", "20:00"], ["10:00", "20:00"], ["10:00", "20:00"], ["10:00", "20:00"], ["10:00", "18:00"]] },
 ];
@@ -98,33 +98,53 @@ function updateBagBtn() {
   b.hidden = bagCount() === 0;
 }
 
-function orderText(s) {
-  const lines = Object.entries(bag).map(([code, qty]) => { const p = INV.productos.find(x => x.codigo === code); return `• ${qty} x ${p.descripcion} (${p.codigo}), ${fmt(p.precio * qty)}`; });
-  const total = Object.entries(bag).reduce((a, [code, qty]) => a + INV.productos.find(x => x.codigo === code).precio * qty, 0);
-  return `Hola High Life ${s.name}, quiero hacer este pedido:\n${lines.join("\n")}\nTotal: ${fmt(total)}\n¿Lo tienen listo para recoger?`;
-}
+const bagTotal = () => Object.entries(bag).reduce((a, [code, qty]) => a + INV.productos.find(x => x.codigo === code).precio * qty, 0);
+const radio = n => document.querySelector(`input[name="${n}"]:checked`).value;
 
 function renderDrawer() {
   const sel = document.getElementById("pickStore");
   const s = store(sel.value);
   const body = document.getElementById("bagLines");
-  let total = 0;
+  let short = false;
   body.innerHTML = Object.entries(bag).map(([code, qty]) => {
-    const p = INV.productos.find(x => x.codigo === code); total += p.precio * qty;
-    const n = p.existencias[s.id];
+    const p = INV.productos.find(x => x.codigo === code);
+    const n = p.existencias[s.id]; if (n < qty) short = true;
     return `<div class="line"><span>${p.descripcion}<br><small>${fmt(p.precio)} c/u</small></span>
       <span class="qty"><button data-q="-1" data-c="${code}" aria-label="Quitar uno">−</button><output>${qty}</output><button data-q="1" data-c="${code}" aria-label="Añadir uno">+</button></span>
-      ${n < qty ? `<span class="warn">${n === 0 ? "Agotado" : "Solo quedan " + n} en ${s.name}. Prueba otra tienda o pregunta por WhatsApp.</span>` : ""}</div>`;
+      ${n < qty ? `<span class="warn">${n === 0 ? "Agotado" : "Solo quedan " + n} en ${s.name}. Prueba otra tienda.</span>` : ""}</div>`;
   }).join("") || `<p class="empty">Tu pedido está vacío. Toca + en cualquier producto para añadirlo.</p>`;
-  document.getElementById("bagTotal").textContent = fmt(total);
-  document.getElementById("preview").textContent = orderText(s);
+  document.getElementById("bagTotal").textContent = fmt(bagTotal());
+  const ship = document.querySelector('input[name="how"][value="ship"]');
+  ship.disabled = !s.ship;
+  ship.nextElementSibling.textContent = s.ship ? "Entrega a domicilio" : `Entrega a domicilio (no disponible en ${s.name})`;
+  if (!s.ship && ship.checked) document.querySelector('input[name="how"][value="pick"]').checked = true;
+  document.getElementById("payCaja").textContent = radio("how") === "ship" ? "En efectivo al recibir" : "En caja al retirar";
   const send = document.getElementById("sendOrder");
-  send.href = waUrl(s, orderText(s));
-  send.innerHTML = `${WA_SVG}Enviar pedido a ${s.name}`;
-  document.getElementById("ozNote").hidden = !!s.wa;
+  send.disabled = bagCount() === 0 || short;
+  send.textContent = radio("pay") === "card" ? `Pagar ${fmt(bagTotal())} y confirmar` : "Confirmar pedido";
 }
 
-function openDrawer() { const d = document.getElementById("drawer"); renderDrawer(); d.hidden = false; d.querySelector(".x").focus(); }
+/* Simulación de fase 2: el pedido entra a Claro, descuenta existencias y la tienda lo prepara */
+function confirmOrder() {
+  const s = store(document.getElementById("pickStore").value), how = radio("how"), pay = radio("pay");
+  const total = bagTotal(), items = Object.entries(bag);
+  items.forEach(([code, qty]) => { INV.productos.find(x => x.codigo === code).existencias[s.id] -= qty; });
+  const num = `HL-${s.id}-${String(Math.floor(1000 + Math.random() * 9000))}`;
+  const now = new Date().toLocaleTimeString("es-DO", { hour: "numeric", minute: "2-digit" });
+  bag = {}; updateBagBtn(); renderMenu();
+  document.querySelectorAll("[data-sync]").forEach(el => el.textContent = "Disponibilidad actualizada, " + now);
+  document.getElementById("bagLines").innerHTML = `<div class="done">
+    <p class="done-t">Pedido recibido</p>
+    <p class="done-n">${num}</p>
+    <p>${how === "ship" ? `High Life ${s.name} te lo lleva a domicilio. Te avisamos cuando salga.` : `Te avisamos cuando esté listo para retirar en High Life ${s.name}.`}
+    ${pay === "card" ? `Pagaste ${fmt(total)} con tarjeta.` : `Pagas ${fmt(total)} ${how === "ship" ? "al recibir" : "en caja al retirar"}.`}</p>
+    <p class="fine">Lleva tu cédula: vendemos solo a mayores de 18 años.</p>
+    <p class="note-tag sm">Nota para High Life: así entra en Claro: pedido ${num} en el almacén ${s.name}, ${items.length} producto${items.length > 1 ? "s" : ""}, existencias descontadas. ${pay === "card" ? "Cobro con Cardnet Web." : "Se factura al entregar."}</p>
+  </div>`;
+  document.querySelector("#drawer .drawer-foot").hidden = true;
+}
+
+function openDrawer() { const d = document.getElementById("drawer"); document.querySelector("#drawer .drawer-foot").hidden = false; renderDrawer(); d.hidden = false; d.querySelector(".x").focus(); }
 function closeDrawer() { document.getElementById("drawer").hidden = true; document.getElementById("bagBtn").focus(); }
 
 /* Simulación: una venta facturada en Claro descuenta la existencia y el catálogo se actualiza */
@@ -178,10 +198,8 @@ async function catalog() {
     const c = b.dataset.c; bag[c] = (bag[c] || 0) + Number(b.dataset.q); if (bag[c] <= 0) delete bag[c];
     renderDrawer(); renderMenu(); updateBagBtn();
   });
-  document.getElementById("sendOrder").addEventListener("click", () => {
-    const s = store(sel.value);
-    if (!s.wa) { try { navigator.clipboard.writeText(orderText(s)); } catch (e) {} }
-  });
+  document.getElementById("sendOrder").addEventListener("click", confirmOrder);
+  document.querySelectorAll('#drawer input[type="radio"]').forEach(r => r.addEventListener("change", renderDrawer));
   const fromHash = decodeURIComponent(location.hash.slice(1));
   renderMenu(); updateBagBtn(); setupSim();
   if (fromHash) { const el = document.getElementById(fromHash); if (el) el.scrollIntoView(); }
