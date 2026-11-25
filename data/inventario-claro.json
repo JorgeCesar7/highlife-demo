@@ -13,8 +13,8 @@
  "productos": [
   {
    "codigo": "HL-PAP-001",
-   "descripcion": "Papel 1¼ sin blanquear, 50 hojas",
-   "categoria": "Papeles y conos",
+   "descripcion": "Papel de enrolar 1¼ sin blanquear, 50 hojas",
+   "categoria": "Papeles para enrolar",
    "precio": 150,
    "itbis": true,
    "existencias": {
@@ -26,8 +26,8 @@
   },
   {
    "codigo": "HL-PAP-002",
-   "descripcion": "Papel king size slim, 32 hojas",
-   "categoria": "Papeles y conos",
+   "descripcion": "Papel de enrolar king size slim, 32 hojas",
+   "categoria": "Papeles para enrolar",
    "precio": 175,
    "itbis": true,
    "existencias": {
@@ -39,8 +39,8 @@
   },
   {
    "codigo": "HL-PAP-003",
-   "descripcion": "Papel king size con filtros de cartón",
-   "categoria": "Papeles y conos",
+   "descripcion": "Rolling papers king size con filtros de cartón",
+   "categoria": "Papeles para enrolar",
    "precio": 250,
    "itbis": true,
    "existencias": {
@@ -53,7 +53,7 @@
   {
    "codigo": "HL-PAP-004",
    "descripcion": "Lion Rolling Circus, papel king size estampado",
-   "categoria": "Papeles y conos",
+   "categoria": "Papeles para enrolar",
    "precio": 275,
    "itbis": true,
    "existencias": {
@@ -66,7 +66,7 @@
   {
    "codigo": "HL-PAP-005",
    "descripcion": "Conos king size prearmados, paquete de 6",
-   "categoria": "Papeles y conos",
+   "categoria": "Papeles para enrolar",
    "precio": 325,
    "itbis": true,
    "existencias": {
@@ -79,7 +79,7 @@
   {
    "codigo": "HL-PAP-006",
    "descripcion": "Filtros de cartón, librito de 50",
-   "categoria": "Papeles y conos",
+   "categoria": "Papeles para enrolar",
    "precio": 100,
    "itbis": true,
    "existencias": {
@@ -92,7 +92,7 @@
   {
    "codigo": "HL-PAP-007",
    "descripcion": "Papel de cáñamo 1¼, 50 hojas",
-   "categoria": "Papeles y conos",
+   "categoria": "Papeles para enrolar",
    "precio": 175,
    "itbis": true,
    "existencias": {
@@ -169,8 +169,8 @@
   },
   {
    "codigo": "HL-BON-001",
-   "descripcion": "Bonga de vidrio recta, 30 cm",
-   "categoria": "Bongas",
+   "descripcion": "Bong de vidrio recto, 30 cm",
+   "categoria": "Bongs y bongas",
    "precio": 2800,
    "itbis": true,
    "existencias": {
@@ -182,8 +182,8 @@
   },
   {
    "codigo": "HL-BON-002",
-   "descripcion": "Bonga de vidrio beaker, 25 cm",
-   "categoria": "Bongas",
+   "descripcion": "Bong de vidrio tipo beaker, 25 cm",
+   "categoria": "Bongs y bongas",
    "precio": 3200,
    "itbis": true,
    "existencias": {
@@ -196,7 +196,7 @@
   {
    "codigo": "HL-BON-003",
    "descripcion": "Bonga de silicona irrompible, 20 cm",
-   "categoria": "Bongas",
+   "categoria": "Bongs y bongas",
    "precio": 1650,
    "itbis": true,
    "existencias": {
@@ -208,8 +208,8 @@
   },
   {
    "codigo": "HL-BON-004",
-   "descripcion": "Bonga mini de vidrio, 15 cm",
-   "categoria": "Bongas",
+   "descripcion": "Bong mini de vidrio, 15 cm",
+   "categoria": "Bongs y bongas",
    "precio": 1250,
    "itbis": true,
    "existencias": {
@@ -222,7 +222,7 @@
   {
    "codigo": "HL-BON-005",
    "descripcion": "Bowl de vidrio 14 mm",
-   "categoria": "Bongas",
+   "categoria": "Bongs y bongas",
    "precio": 450,
    "itbis": true,
    "existencias": {
@@ -235,7 +235,7 @@
   {
    "codigo": "HL-PIP-001",
    "descripcion": "Pipa de vidrio tipo cuchara",
-   "categoria": "Pipas",
+   "categoria": "Pipas para fumar",
    "precio": 650,
    "itbis": true,
    "existencias": {
@@ -248,7 +248,7 @@
   {
    "codigo": "HL-PIP-002",
    "descripcion": "Pipa de madera con tapa",
-   "categoria": "Pipas",
+   "categoria": "Pipas para fumar",
    "precio": 850,
    "itbis": true,
    "existencias": {
@@ -261,7 +261,7 @@
   {
    "codigo": "HL-PIP-003",
    "descripcion": "Pipa de silicona con bowl de vidrio",
-   "categoria": "Pipas",
+   "categoria": "Pipas para fumar",
    "precio": 750,
    "itbis": true,
    "existencias": {
@@ -274,7 +274,7 @@
   {
    "codigo": "HL-PIP-004",
    "descripcion": "One hitter de metal",
-   "categoria": "Pipas",
+   "categoria": "Pipas para fumar",
    "precio": 400,
    "itbis": true,
    "existencias": {
@@ -285,10 +285,10 @@
    }
   },
   {
-   "codigo": "HL-VAP-001",
-   "descripcion": "Vaporizador portátil de hierbas secas",
-   "categoria": "Vaporizadores",
-   "precio": 7900,
+   "codigo": "HL-VPE-001",
+   "descripcion": "Vape desechable 5,000 puffs, varios sabores",
+   "categoria": "Vapes",
+   "precio": 650,
    "itbis": true,
    "existencias": {
     "BV": 3,
@@ -298,10 +298,10 @@
    }
   },
   {
-   "codigo": "HL-VAP-002",
-   "descripcion": "Batería 510 con temperatura ajustable",
-   "categoria": "Vaporizadores",
-   "precio": 1100,
+   "codigo": "HL-VPE-002",
+   "descripcion": "Vape desechable 10,000 puffs, varios sabores",
+   "categoria": "Vapes",
+   "precio": 950,
    "itbis": true,
    "existencias": {
     "BV": 39,
@@ -311,10 +311,10 @@
    }
   },
   {
-   "codigo": "HL-VAP-003",
-   "descripcion": "Vaporizador de mesa",
-   "categoria": "Vaporizadores",
-   "precio": 14500,
+   "codigo": "HL-VPE-003",
+   "descripcion": "Pod recargable con cartucho",
+   "categoria": "Vapes",
+   "precio": 1850,
    "itbis": true,
    "existencias": {
     "BV": 27,
@@ -324,16 +324,68 @@
    }
   },
   {
-   "codigo": "HL-ENC-001",
-   "descripcion": "Encendedor de gas recargable",
-   "categoria": "Encendedores",
-   "precio": 125,
+   "codigo": "HL-VPE-004",
+   "descripcion": "Cartucho de repuesto para pod, paquete de 2",
+   "categoria": "Vapes",
+   "precio": 550,
    "itbis": true,
    "existencias": {
     "BV": 11,
     "OZ": 14,
     "STI": 0,
     "PC": 23
+   }
+  },
+  {
+   "codigo": "HL-VAP-001",
+   "descripcion": "Vaporizador portátil de hierbas secas",
+   "categoria": "Vaporizadores",
+   "precio": 7900,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 13,
+    "STI": 0,
+    "PC": 35
+   }
+  },
+  {
+   "codigo": "HL-VAP-002",
+   "descripcion": "Batería 510 con temperatura ajustable",
+   "categoria": "Vaporizadores",
+   "precio": 1100,
+   "itbis": true,
+   "existencias": {
+    "BV": 5,
+    "OZ": 2,
+    "STI": 3,
+    "PC": 36
+   }
+  },
+  {
+   "codigo": "HL-VAP-003",
+   "descripcion": "Vaporizador de mesa",
+   "categoria": "Vaporizadores",
+   "precio": 14500,
+   "itbis": true,
+   "existencias": {
+    "BV": 0,
+    "OZ": 19,
+    "STI": 4,
+    "PC": 11
+   }
+  },
+  {
+   "codigo": "HL-ENC-001",
+   "descripcion": "Encendedor de gas recargable",
+   "categoria": "Encendedores",
+   "precio": 125,
+   "itbis": true,
+   "existencias": {
+    "BV": 29,
+    "OZ": 22,
+    "STI": 25,
+    "PC": 0
    }
   },
   {
@@ -344,9 +396,9 @@
    "itbis": true,
    "existencias": {
     "BV": 0,
-    "OZ": 13,
-    "STI": 0,
-    "PC": 35
+    "OZ": 23,
+    "STI": 37,
+    "PC": 32
    }
   },
   {
@@ -356,10 +408,10 @@
    "precio": 850,
    "itbis": true,
    "existencias": {
-    "BV": 5,
-    "OZ": 2,
-    "STI": 3,
-    "PC": 36
+    "BV": 0,
+    "OZ": 32,
+    "STI": 28,
+    "PC": 31
    }
   },
   {
@@ -369,10 +421,10 @@
    "precio": 450,
    "itbis": true,
    "existencias": {
-    "BV": 0,
-    "OZ": 19,
-    "STI": 4,
-    "PC": 11
+    "BV": 2,
+    "OZ": 5,
+    "STI": 34,
+    "PC": 3
    }
   },
   {
@@ -382,10 +434,10 @@
    "precio": 650,
    "itbis": true,
    "existencias": {
-    "BV": 29,
-    "OZ": 22,
-    "STI": 25,
-    "PC": 0
+    "BV": 18,
+    "OZ": 16,
+    "STI": 1,
+    "PC": 1
    }
   },
   {
@@ -395,10 +447,10 @@
    "precio": 1350,
    "itbis": true,
    "existencias": {
-    "BV": 0,
-    "OZ": 23,
-    "STI": 37,
-    "PC": 32
+    "BV": 39,
+    "OZ": 0,
+    "STI": 3,
+    "PC": 22
    }
   },
   {
@@ -408,10 +460,10 @@
    "precio": 1550,
    "itbis": true,
    "existencias": {
-    "BV": 0,
-    "OZ": 32,
-    "STI": 28,
-    "PC": 31
+    "BV": 31,
+    "OZ": 8,
+    "STI": 15,
+    "PC": 33
    }
   },
   {
@@ -421,10 +473,10 @@
    "precio": 350,
    "itbis": true,
    "existencias": {
-    "BV": 2,
-    "OZ": 5,
-    "STI": 34,
-    "PC": 3
+    "BV": 28,
+    "OZ": 0,
+    "STI": 17,
+    "PC": 26
    }
   },
   {
@@ -434,10 +486,10 @@
    "precio": 550,
    "itbis": true,
    "existencias": {
-    "BV": 18,
-    "OZ": 16,
-    "STI": 1,
-    "PC": 1
+    "BV": 38,
+    "OZ": 23,
+    "STI": 0,
+    "PC": 33
    }
   },
   {
@@ -447,10 +499,10 @@
    "precio": 1250,
    "itbis": true,
    "existencias": {
-    "BV": 39,
-    "OZ": 0,
-    "STI": 3,
-    "PC": 22
+    "BV": 0,
+    "OZ": 21,
+    "STI": 23,
+    "PC": 13
    }
   }
  ]

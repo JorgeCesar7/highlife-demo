@@ -1,35 +1,39 @@
 ﻿Código,Descripción,Categoría,Precio,ITBIS,Existencia Bella Vista,Existencia Ensanche Ozama,Existencia Santiago,Existencia Punta Cana
-HL-PAP-001,"Papel 1¼ sin blanquear, 50 hojas",Papeles y conos,150,Sí,0,37,21,22
-HL-PAP-002,"Papel king size slim, 32 hojas",Papeles y conos,175,Sí,32,29,11,2
-HL-PAP-003,Papel king size con filtros de cartón,Papeles y conos,250,Sí,20,37,3,21
-HL-PAP-004,"Lion Rolling Circus, papel king size estampado",Papeles y conos,275,Sí,3,0,5,0
-HL-PAP-005,"Conos king size prearmados, paquete de 6",Papeles y conos,325,Sí,2,32,10,11
-HL-PAP-006,"Filtros de cartón, librito de 50",Papeles y conos,100,Sí,27,1,35,16
-HL-PAP-007,"Papel de cáñamo 1¼, 50 hojas",Papeles y conos,175,Sí,3,2,10,0
+HL-PAP-001,"Papel de enrolar 1¼ sin blanquear, 50 hojas",Papeles para enrolar,150,Sí,0,37,21,22
+HL-PAP-002,"Papel de enrolar king size slim, 32 hojas",Papeles para enrolar,175,Sí,32,29,11,2
+HL-PAP-003,Rolling papers king size con filtros de cartón,Papeles para enrolar,250,Sí,20,37,3,21
+HL-PAP-004,"Lion Rolling Circus, papel king size estampado",Papeles para enrolar,275,Sí,3,0,5,0
+HL-PAP-005,"Conos king size prearmados, paquete de 6",Papeles para enrolar,325,Sí,2,32,10,11
+HL-PAP-006,"Filtros de cartón, librito de 50",Papeles para enrolar,100,Sí,27,1,35,16
+HL-PAP-007,"Papel de cáñamo 1¼, 50 hojas",Papeles para enrolar,175,Sí,3,2,10,0
 HL-GRI-001,"Grinder de aluminio 4 piezas, 63 mm",Grinders,1450,Sí,21,1,2,0
 HL-GRI-002,"Grinder de aluminio 4 piezas, 50 mm",Grinders,950,Sí,9,14,33,33
 HL-GRI-003,"Grinder de metal 2 piezas, 40 mm",Grinders,450,Sí,10,2,3,8
 HL-GRI-004,Grinder eléctrico recargable,Grinders,2900,Sí,35,40,29,31
 HL-GRI-005,Grinder de madera con tapa magnética,Grinders,750,Sí,0,27,20,37
-HL-BON-001,"Bonga de vidrio recta, 30 cm",Bongas,2800,Sí,3,20,0,0
-HL-BON-002,"Bonga de vidrio beaker, 25 cm",Bongas,3200,Sí,1,36,2,11
-HL-BON-003,"Bonga de silicona irrompible, 20 cm",Bongas,1650,Sí,0,1,0,3
-HL-BON-004,"Bonga mini de vidrio, 15 cm",Bongas,1250,Sí,1,3,22,27
-HL-BON-005,Bowl de vidrio 14 mm,Bongas,450,Sí,0,14,16,28
-HL-PIP-001,Pipa de vidrio tipo cuchara,Pipas,650,Sí,2,24,6,2
-HL-PIP-002,Pipa de madera con tapa,Pipas,850,Sí,25,0,12,3
-HL-PIP-003,Pipa de silicona con bowl de vidrio,Pipas,750,Sí,17,2,0,7
-HL-PIP-004,One hitter de metal,Pipas,400,Sí,20,38,12,9
-HL-VAP-001,Vaporizador portátil de hierbas secas,Vaporizadores,7900,Sí,3,1,18,26
-HL-VAP-002,Batería 510 con temperatura ajustable,Vaporizadores,1100,Sí,39,40,21,24
-HL-VAP-003,Vaporizador de mesa,Vaporizadores,14500,Sí,27,0,38,8
-HL-ENC-001,Encendedor de gas recargable,Encendedores,125,Sí,11,14,0,23
-HL-ENC-002,Encendedor tipo antorcha,Encendedores,950,Sí,0,13,0,35
-HL-ENC-003,Encendedor eléctrico de arco USB,Encendedores,850,Sí,5,2,3,36
-HL-ENC-004,Gas butano 300 ml,Encendedores,450,Sí,0,19,4,11
-HL-ACC-001,Bandeja metálica mediana,Accesorios,650,Sí,29,22,25,0
-HL-ACC-002,Bandeja con tapa magnética,Accesorios,1350,Sí,0,23,37,32
-HL-ACC-003,Estuche antiolor con candado,Accesorios,1550,Sí,0,32,28,31
-HL-ACC-004,Frasco de vidrio hermético,Accesorios,350,Sí,2,5,34,3
-HL-ACC-005,Kit de limpieza para vidrio,Accesorios,550,Sí,18,16,1,1
-HL-ACC-006,Báscula digital de bolsillo,Accesorios,1250,Sí,39,0,3,22
+HL-BON-001,"Bong de vidrio recto, 30 cm",Bongs y bongas,2800,Sí,3,20,0,0
+HL-BON-002,"Bong de vidrio tipo beaker, 25 cm",Bongs y bongas,3200,Sí,1,36,2,11
+HL-BON-003,"Bonga de silicona irrompible, 20 cm",Bongs y bongas,1650,Sí,0,1,0,3
+HL-BON-004,"Bong mini de vidrio, 15 cm",Bongs y bongas,1250,Sí,1,3,22,27
+HL-BON-005,Bowl de vidrio 14 mm,Bongs y bongas,450,Sí,0,14,16,28
+HL-PIP-001,Pipa de vidrio tipo cuchara,Pipas para fumar,650,Sí,2,24,6,2
+HL-PIP-002,Pipa de madera con tapa,Pipas para fumar,850,Sí,25,0,12,3
+HL-PIP-003,Pipa de silicona con bowl de vidrio,Pipas para fumar,750,Sí,17,2,0,7
+HL-PIP-004,One hitter de metal,Pipas para fumar,400,Sí,20,38,12,9
+HL-VPE-001,"Vape desechable 5,000 puffs, varios sabores",Vapes,650,Sí,3,1,18,26
+HL-VPE-002,"Vape desechable 10,000 puffs, varios sabores",Vapes,950,Sí,39,40,21,24
+HL-VPE-003,Pod recargable con cartucho,Vapes,1850,Sí,27,0,38,8
+HL-VPE-004,"Cartucho de repuesto para pod, paquete de 2",Vapes,550,Sí,11,14,0,23
+HL-VAP-001,Vaporizador portátil de hierbas secas,Vaporizadores,7900,Sí,0,13,0,35
+HL-VAP-002,Batería 510 con temperatura ajustable,Vaporizadores,1100,Sí,5,2,3,36
+HL-VAP-003,Vaporizador de mesa,Vaporizadores,14500,Sí,0,19,4,11
+HL-ENC-001,Encendedor de gas recargable,Encendedores,125,Sí,29,22,25,0
+HL-ENC-002,Encendedor tipo antorcha,Encendedores,950,Sí,0,23,37,32
+HL-ENC-003,Encendedor eléctrico de arco USB,Encendedores,850,Sí,0,32,28,31
+HL-ENC-004,Gas butano 300 ml,Encendedores,450,Sí,2,5,34,3
+HL-ACC-001,Bandeja metálica mediana,Accesorios,650,Sí,18,16,1,1
+HL-ACC-002,Bandeja con tapa magnética,Accesorios,1350,Sí,39,0,3,22
+HL-ACC-003,Estuche antiolor con candado,Accesorios,1550,Sí,31,8,15,33
+HL-ACC-004,Frasco de vidrio hermético,Accesorios,350,Sí,28,0,17,26
+HL-ACC-005,Kit de limpieza para vidrio,Accesorios,550,Sí,38,23,0,33
+HL-ACC-006,Báscula digital de bolsillo,Accesorios,1250,Sí,0,21,23,13

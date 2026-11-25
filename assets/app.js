@@ -192,7 +192,7 @@ function mapTabs() {
   const tabs = document.querySelectorAll(".map-tab"); if (!tabs.length) return;
   const frame = document.getElementById("map-frame"), go = document.getElementById("map-go");
   tabs.forEach(t => t.addEventListener("click", () => {
-    tabs.forEach(x => x.setAttribute("aria-selected", x === t));
+    tabs.forEach(x => x.setAttribute("aria-pressed", x === t));
     frame.src = t.dataset.src; frame.title = "Mapa de High Life Smoke Shop " + t.dataset.name;
     go.href = t.dataset.go; go.textContent = "Abrir " + t.dataset.name + " en Google Maps";
   }));
