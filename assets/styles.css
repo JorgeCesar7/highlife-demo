@@ -390,7 +390,7 @@ section[id], article[id], .faq[id] { scroll-margin-top: 84px; }
 .group h2 { margin-bottom: 18px; }
 .item { display: flex; flex-direction: column; grid-template-columns: none; gap: 0; padding: 0; border: 2px solid var(--black); border-radius: 18px; overflow: hidden; background: var(--white); text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
 .item:hover { transform: translateY(-3px); box-shadow: 6px 6px 0 var(--black); }
-.pimg { display: block; width: 100%; height: auto; aspect-ratio: 1; border-bottom: 2px solid var(--black); background: #F3F3F1; }
+.pimg { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; padding: 14%; border-bottom: 2px solid var(--black); background: #fff; }
 .pbody { display: flex; flex-direction: column; gap: 8px; padding: 14px; flex: 1; }
 .item h3 { font-size: 15.5px; line-height: 1.3; }
 .item .avail { grid-column: auto; font-size: 12px; gap: 3px 10px; }
@@ -401,7 +401,7 @@ section[id], article[id], .faq[id] { scroll-margin-top: 84px; }
 
 /* Categorías con imagen */
 .cat.has-img { padding: 0; min-height: 0; justify-content: flex-start; overflow: hidden; }
-.cat.has-img img { display: block; width: 100%; height: auto; aspect-ratio: 640 / 420; border-bottom: 2px solid var(--black); transition: transform .3s ease; }
+.cat.has-img img { display: block; width: 100%; height: auto; aspect-ratio: 640 / 420; object-fit: contain; padding: 9% 12%; background: #fff; border-bottom: 2px solid var(--black); transition: transform .3s ease; }
 .cat.has-img:hover img { transform: scale(1.04); }
 .cat.has-img b { padding: 16px 18px 0; }
 .cat.has-img span { padding: 6px 18px 16px; }
@@ -452,6 +452,8 @@ section[id], article[id], .faq[id] { scroll-margin-top: 84px; }
   .item .price { font-size: 21px; }
   .item .add { width: 38px; height: 38px; font-size: 20px; }
   .item .go { padding: 4px 10px; font-size: 13px; }
+  .cat.has-img img { padding: 6% 8%; }
+  .pimg { padding: 10%; }
   .cat.has-img b { padding: 12px 12px 0; }
   .cat.has-img span { padding: 4px 12px 12px; }
   .store-hero .wrap { grid-template-columns: 1fr; text-align: center; justify-items: center; padding-top: 28px; }

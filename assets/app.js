@@ -83,7 +83,7 @@ function itemHtml(p) {
   const total = shown.reduce((a, s) => a + p.existencias[s.id], 0);
   const avail = shown.map(s => { const n = p.existencias[s.id], k = state(n); return `<span class="${k}"><i class="dot ${k}"></i>${s.name}${branch === "ALL" ? "" : ": " + stateTxt(n)}</span>`; }).join("");
   const inBag = !!bag[p.codigo];
-  return `<article class="item" data-code="${p.codigo}"><img class="pimg" src="assets/productos/${p.codigo}.svg" alt="${p.descripcion}" width="400" height="400" loading="lazy">
+  return `<article class="item" data-code="${p.codigo}"><img class="pimg" src="assets/fotos/${(window.FOTOS || {})[p.codigo] || "papeles-a"}-sm.webp" alt="${p.descripcion}" width="400" height="400" loading="lazy">
     <div class="pbody"><h3>${p.descripcion}</h3>
     <div class="avail" aria-label="Disponibilidad por tienda">${avail}</div>
     <div class="pfoot"><span class="price">${fmt(p.precio)}</span>
