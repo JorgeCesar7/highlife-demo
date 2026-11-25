@@ -152,6 +152,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 /* Pie */
+.f-social { display: flex; gap: 10px; margin-top: 4px; }
+.foot .f-social a.ig { width: 44px; height: 44px; border-radius: 50%; background: var(--yellow); color: var(--black); display: grid; place-items: center; padding: 0; transition: transform .15s ease; }
+.foot .f-social a.ig:hover { color: var(--black); text-decoration: none; transform: translateY(-2px); }
+.f-social svg { width: 22px; height: 22px; }
 .foot { background: var(--black); color: #CFCFCF; font-size: 14px; padding: 56px 0 28px; }
 .foot .wrap { display: grid; grid-template-columns: 1fr 2.2fr .9fr; gap: 40px; }
 .foot a { text-decoration: none; color: var(--white); }
