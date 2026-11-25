@@ -42,7 +42,7 @@ function todayLine(s) {
 /* Las tiendas vienen en el HTML (lo leen Google y los rastreadores de IA sin JavaScript); aquí solo se marca el día de hoy */
 function renderStores() {
   const d = new Date().getDay();
-  document.querySelectorAll(".store[data-store]").forEach(card => {
+  document.querySelectorAll(".store[data-store], .tile[data-store]").forEach(card => {
     const s = store(card.dataset.store);
     const today = card.querySelector(".today"); if (today) today.innerHTML = todayLine(s);
     card.querySelectorAll("tr[data-day]").forEach(tr => tr.classList.toggle("is-today", Number(tr.dataset.day) === d));
@@ -58,7 +58,7 @@ async function loadInventory() {
   const res = await fetch("data/inventario-claro.json", { cache: "no-store" });
   INV = await res.json();
   const when = new Date(INV.actualizado);
-  document.querySelectorAll("[data-sync]").forEach(el => el.textContent = "Inventario de Claro, " + when.toLocaleDateString("es-DO", { day: "numeric", month: "short" }) + " " + when.toLocaleTimeString("es-DO", { hour: "numeric", minute: "2-digit" }));
+  document.querySelectorAll("[data-sync]").forEach(el => el.textContent = "Disponibilidad actualizada, " + when.toLocaleDateString("es-DO", { day: "numeric", month: "short" }) + " " + when.toLocaleTimeString("es-DO", { hour: "numeric", minute: "2-digit" }));
 }
 
 function renderMenu() {
@@ -72,7 +72,7 @@ function renderMenu() {
     if (!list.length) return;
     const slug = c.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/\s+/g, "-");
     navHtml += `<a href="#${slug}">${c} <small>${list.length}</small></a>`;
-    html += `<section class="group" id="${slug}" aria-labelledby="h-${slug}"><h2 id="h-${slug}">${c}</h2>${list.map(itemHtml).join("")}</section>`;
+    html += `<section class="group" id="${slug}" aria-labelledby="h-${slug}"><h2 id="h-${slug}">${c}</h2><div class="items">${list.map(itemHtml).join("")}</div></section>`;
   });
   out.innerHTML = html || `<p class="empty">No hay productos que coincidan con “${query}”. Prueba con otra palabra o escríbenos por WhatsApp.</p>`;
   nav.innerHTML = navHtml;
@@ -83,12 +83,12 @@ function itemHtml(p) {
   const total = shown.reduce((a, s) => a + p.existencias[s.id], 0);
   const avail = shown.map(s => { const n = p.existencias[s.id], k = state(n); return `<span class="${k}"><i class="dot ${k}"></i>${s.name}${branch === "ALL" ? "" : ": " + stateTxt(n)}</span>`; }).join("");
   const inBag = !!bag[p.codigo];
-  return `<div class="item" data-code="${p.codigo}">
-    <div><h3>${p.descripcion}</h3><span class="code">${p.codigo}</span></div>
+  return `<article class="item" data-code="${p.codigo}"><img class="pimg" src="assets/productos/${p.codigo}.svg" alt="${p.descripcion}" width="400" height="400" loading="lazy">
+    <div class="pbody"><h3>${p.descripcion}</h3>
     <div class="avail" aria-label="Disponibilidad por tienda">${avail}</div>
-    <div class="price">${fmt(p.precio)}</div>
-    <button class="add" aria-pressed="${inBag}" aria-label="${inBag ? "Quitar de" : "Añadir a"} mi pedido: ${p.descripcion}" ${total === 0 && !inBag ? "disabled" : ""}>${inBag ? "✓" : "+"}</button>
-  </div>`;
+    <div class="pfoot"><span class="price">${fmt(p.precio)}</span>
+    <button class="add" aria-pressed="${inBag}" aria-label="${inBag ? "Quitar de" : "Añadir a"} mi pedido: ${p.descripcion}" ${total === 0 && !inBag ? "disabled" : ""}>${inBag ? "✓" : "+"}</button></div></div>
+  </article>`;
 }
 
 function bagCount() { return Object.values(bag).reduce((a, b) => a + b, 0); }
@@ -140,7 +140,7 @@ function setupSim() {
     p.existencias[s.id] -= 1;
     const now = new Date().toLocaleTimeString("es-DO", { hour: "numeric", minute: "2-digit", second: "2-digit" });
     log.insertAdjacentHTML("afterbegin", `<div>${now}: factura en ${s.name}, 1 x ${p.descripcion}. Quedan ${p.existencias[s.id]}.</div>`);
-    document.querySelectorAll("[data-sync]").forEach(el => el.textContent = "Inventario de Claro, actualizado " + now);
+    document.querySelectorAll("[data-sync]").forEach(el => el.textContent = "Disponibilidad actualizada, " + now);
     renderMenu();
     const row = document.querySelector(`.item[data-code="${p.codigo}"]`);
     if (row) { row.classList.add("flash"); }
